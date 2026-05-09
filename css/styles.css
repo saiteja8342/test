@@ -281,7 +281,7 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); font-weight: 700; lin
   opacity: 0; visibility: hidden; transition: all 0.4s;
 }
 .video-modal.open { opacity: 1; visibility: visible; }
-.video-modal-content { width: 90vw; max-width: 1200px; aspect-ratio: 16/9; position: relative; }
+.video-modal-content { width: 90vw; height: 85vh; max-width: 1200px; position: relative; }
 .video-modal-content iframe { width: 100%; height: 100%; border: none; border-radius: 12px; }
 .video-modal-close {
   position: absolute; top: -50px; right: 0; width: 40px; height: 40px;
