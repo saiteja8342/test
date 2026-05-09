@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MOTIONNODEEDITS — Premium cinematic AI creative agency specializing in AI video editing, ads, reels, and motion graphics.">
+  <title>MOTIONNODEEDITS — Cinematic AI Creative Agency</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="image/logo.png">
+</head>
+<body>
+
+<!-- CUSTOM CURSOR -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <img src="image/logo.png" alt="MOTIONNODEEDITS" style="height: 40px;">
+  </a>
+  <ul class="nav-links">
+    <li><a href="#portfolio">Work</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-cta">
+    <a href="#portfolio" class="btn-primary">View Work</a>
+  </div>
+  <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose">&times;</button>
+  <a href="#portfolio" onclick="closeMobile()">Work</a>
+  <a href="#services" onclick="closeMobile()">Services</a>
+  <a href="#process" onclick="closeMobile()">Process</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <video class="hero-video" autoplay muted loop playsinline>
+    <source src="https://cdn.coverr.co/videos/coverr-abstract-dark-smoke/1080p.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <h1 class="reveal">Crafted in the <span class="highlight">DARK</span>.<br>Built to dominate the <span class="highlight">LIGHT</span>.</h1>
+    <p class="hero-sub reveal reveal-delay-1">Premium cinematic AI production for brands that demand excellence.</p>
+    <div class="hero-btns reveal reveal-delay-2">
+      <a href="#portfolio" class="btn-primary">View Work</a>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats" id="stats">
+  <div class="stats-grid">
+    <div class="stat-item reveal">
+      <h3><span class="stat-num" data-count="150" data-suffix="+">0</span></h3>
+      <p>Projects Delivered</p>
+    </div>
+    <div class="stat-item reveal reveal-delay-1">
+      <h3><span class="stat-num" data-count="50" data-suffix="M+">0</span></h3>
+      <p>Views Generated</p>
+    </div>
+    <div class="stat-item reveal reveal-delay-2">
+      <h3><span class="stat-num" data-count="98" data-suffix="%">0</span></h3>
+      <p>Client Retention</p>
+    </div>
+    <div class="stat-item reveal reveal-delay-3">
+      <h3><span class="stat-num" data-count="24" data-suffix="hr">0</span></h3>
+      <p>Turnaround Time</p>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<section class="marquee-section">
+  <div class="marquee-track">
+    <span>AI Video Editing</span><span>AI Ads</span><span>AI Reels</span><span>Motion Graphics</span><span>AI Avatar Videos</span><span>Post Production</span><span>Real Estate Ads</span>
+    <span>AI Video Editing</span><span>AI Ads</span><span>AI Reels</span><span>Motion Graphics</span><span>AI Avatar Videos</span><span>Post Production</span><span>Real Estate Ads</span>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="portfolio" id="portfolio">
+  <div class="portfolio-header">
+    <div>
+      <p class="section-label reveal">Selected Work</p>
+      <h2 class="section-title reveal reveal-delay-1">Cinematic Showcase</h2>
+      <p class="section-desc reveal reveal-delay-2">Each project is a cinematic experience — crafted with AI precision and human artistry.</p>
+    </div>
+    <div class="portfolio-filters reveal reveal-delay-3">
+      <!-- Filter buttons are dynamically generated from categories in main.js -->
+    </div>
+  </div>
+  <div class="portfolio-scroll" id="portfolioCards">
+    <!-- Cards injected by JS -->
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <p class="section-label reveal">What We Do</p>
+  <h2 class="section-title reveal reveal-delay-1">Services</h2>
+  <p class="section-desc reveal reveal-delay-2">End-to-end AI-powered creative solutions for the modern brand.</p>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <span class="service-icon">🎬</span>
+      <h3>AI Video Editing</h3>
+      <p>Cinematic editing powered by AI — faster turnarounds, premium quality, every time.</p>
+    </div>
+    <div class="service-card reveal reveal-delay-1">
+      <span class="service-icon">📢</span>
+      <h3>AI Ads</h3>
+      <p>Scroll-stopping ad creatives engineered for maximum conversions and brand impact.</p>
+    </div>
+    <div class="service-card reveal reveal-delay-2">
+      <span class="service-icon">🤖</span>
+      <h3>AI Avatar Videos</h3>
+      <p>Hyper-realistic AI avatars that deliver your message with human-like authenticity.</p>
+    </div>
+    <div class="service-card reveal reveal-delay-3">
+      <span class="service-icon">✨</span>
+      <h3>Motion Graphics</h3>
+      <p>Dynamic motion design that elevates your brand with fluid, eye-catching visuals.</p>
+    </div>
+    <div class="service-card reveal reveal-delay-4">
+      <span class="service-icon">🔥</span>
+      <h3>Viral Reels</h3>
+      <p>Short-form content optimized for virality — built for Instagram, TikTok, and YouTube.</p>
+    </div>
+    <div class="service-card reveal reveal-delay-5">
+      <span class="service-icon">🏠</span>
+      <h3>Real Estate Promotions</h3>
+      <p>Cinematic property showcases that sell aspirations, not just spaces.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <p class="section-label reveal">How We Work</p>
+  <h2 class="section-title reveal reveal-delay-1">Our Process</h2>
+  <p class="section-desc reveal reveal-delay-2">A streamlined creative pipeline from brief to delivery.</p>
+  <div class="timeline">
+    <div class="timeline-item reveal">
+      <div class="timeline-num">01</div>
+      <div class="timeline-content">
+        <h3>Brief</h3>
+        <p>We start by understanding your vision, goals, and audience — a deep creative brief that aligns every decision.</p>
+      </div>
+    </div>
+    <div class="timeline-item reveal reveal-delay-1">
+      <div class="timeline-num">02</div>
+      <div class="timeline-content">
+        <h3>AI Production</h3>
+        <p>Our AI pipeline generates concepts, scripts, and initial assets at unprecedented speed and quality.</p>
+      </div>
+    </div>
+    <div class="timeline-item reveal reveal-delay-2">
+      <div class="timeline-num">03</div>
+      <div class="timeline-content">
+        <h3>Editing</h3>
+        <p>Expert editors refine every frame — color grading, sound design, and cinematic polish.</p>
+      </div>
+    </div>
+    <div class="timeline-item reveal reveal-delay-3">
+      <div class="timeline-num">04</div>
+      <div class="timeline-content">
+        <h3>Delivery</h3>
+        <p>Final deliverables optimized for every platform — ready to go live and dominate.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-grid">
+    <div>
+      <p class="section-label reveal">Get in Touch</p>
+      <h2 class="section-title reveal reveal-delay-1">Contact Us</h2>
+      <form class="contact-form reveal reveal-delay-2">
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" placeholder="Your name">
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea rows="5" placeholder="Your message..."></textarea>
+        </div>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+    <div class="contact-info reveal reveal-delay-3">
+      <h3>Let's build something<br>extraordinary.</h3>
+      <p>We respond within 24 hours. Whether you have a project in mind or just want to explore possibilities — reach out.</p>
+      <div class="social-links">
+        <a href="https://wa.me/918985351756" target="_blank" class="social-btn" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.888-.788-1.489-1.761-1.663-2.061-.173-.299-.018-.461.13-.611.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/motionnodeedits/" target="_blank" class="social-btn" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+        </a>
+        <a href="https://www.facebook.com/motionnodeedits/" target="_blank" class="social-btn" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+        </a>
+        <a href="https://www.youtube.com/@motionnodeedtis" target="_blank" class="social-btn" aria-label="YouTube">
+          <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-content">
+    <a href="#" class="nav-logo">
+      <img src="image/logo.png" alt="MOTIONNODEEDITS" style="height: 40px;">
+    </a>
+    <ul class="footer-links">
+      <li><a href="#portfolio">Work</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="footer-socials">
+      <a href="https://www.instagram.com/motionnodeedits/" target="_blank" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+      </a>
+      <a href="https://www.facebook.com/motionnodeedits/" target="_blank" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+      </a>
+      <a href="https://www.youtube.com/@motionnodeedtis" target="_blank" aria-label="YouTube">
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+      </a>
+    </div>
+    <p class="footer-copy">&copy; 2026 MOTIONNODEEDITS. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/918985351756" target="_blank" class="whatsapp-float" aria-label="Contact on WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.888-.788-1.489-1.761-1.663-2.061-.173-.299-.018-.461.13-.611.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+</a>
+
+<!-- VIDEO MODAL -->
+<div class="video-modal" id="videoModal">
+  <div class="modal-content">
+    <button class="modal-close" id="modalClose">&times;</button>
+    <iframe id="modalIframe" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  </div>
+</div>
+
+
+
+<script src="main.js"></script>
+</body>
+</html>
