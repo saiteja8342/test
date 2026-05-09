@@ -1,24 +1,20 @@
-/* ============================================
-   MOTIONNODEEDITS — Main JavaScript
-   ============================================ */
-
-// ── Portfolio Data (YouTube-based) ──
+// ── Portfolio Data (Real channel: @motionnodeedtis) ──
 const defaultPortfolio = [
-  { id:'1', title:'Luxury Perfume AI Ad', category:'ai-ads', youtubeId:'dQw4w9WgXcQ', desc:'AI-generated luxury fragrance commercial' },
-  { id:'2', title:'Coffee Morning', category:'ai-ads', youtubeId:'ScMzIvxBSi4', desc:'Premium AI coffee commercial' },
-  { id:'3', title:'Sweet Delights', category:'ai-ads', youtubeId:'LXb3EKWsInQ', desc:'AI candy brand showcase' },
-  { id:'4', title:'Urban Fashion Reel', category:'ai-reels', youtubeId:'2Vv-BfVoq4g', desc:'Hyper-edited AI fashion reel' },
-  { id:'5', title:'Tech Product Launch', category:'ai-reels', youtubeId:'jNQXAC9IVRw', desc:'Futuristic product reveal' },
-  { id:'6', title:'AI Avatar Presenter', category:'ai-avatar', youtubeId:'dQw4w9WgXcQ', desc:'AI avatar business presentation' },
-  { id:'7', title:'Digital Human Host', category:'ai-avatar', youtubeId:'ScMzIvxBSi4', desc:'Realistic AI avatar hosting' },
-  { id:'8', title:'Modern Villa Tour', category:'real-estate', youtubeId:'LXb3EKWsInQ', desc:'Cinematic real estate walkthrough' },
-  { id:'9', title:'Skyline Penthouse', category:'real-estate', youtubeId:'2Vv-BfVoq4g', desc:'Luxury property showcase' },
-  { id:'10', title:'Color Grading Reel', category:'post-production', youtubeId:'jNQXAC9IVRw', desc:'Professional color grading demo' },
-  { id:'11', title:'VFX Breakdown', category:'post-production', youtubeId:'dQw4w9WgXcQ', desc:'Visual effects compositing' },
-  { id:'12', title:'Neon Night Drive', category:'ai-ads', youtubeId:'ScMzIvxBSi4', desc:'Cinematic night automotive ad' },
+  { id:'1', title:'Car Thar | AI Car', category:'ai-ads', youtubeId:'IltFdkq1qRA', desc:'Cinematic AI-generated car commercial' },
+  { id:'2', title:'Mysore Pak | AI Ad', category:'ai-ads', youtubeId:'VYvni7IJaGc', desc:'Premium AI food product ad' },
+  { id:'3', title:'AI Coffee Ad | Cinematic Commercial', category:'ai-ads', youtubeId:'2w_ZO0n9xIg', desc:'Cinematic coffee powder commercial' },
+  { id:'4', title:'Sun Story Explained', category:'ai-reels', youtubeId:'pKvRNSqEBE4', desc:'AI-narrated explainer reel' },
+  { id:'5', title:'AI Video', category:'ai-reels', youtubeId:'k9egdphA9mQ', desc:'Showcase video made with AI' },
+  { id:'6', title:'AI Avatar Video', category:'ai-avatar', youtubeId:'ukLuGI2qmZA', desc:'Hyper-realistic AI avatar in action' },
 ];
 
 function getPortfolio() {
+  // Version key — bump this to force-clear old cached portfolio data
+  const PORTFOLIO_VERSION = 'v3';
+  if (localStorage.getItem('mne_portfolio_version') !== PORTFOLIO_VERSION) {
+    localStorage.removeItem('mne_portfolio');
+    localStorage.setItem('mne_portfolio_version', PORTFOLIO_VERSION);
+  }
   const saved = localStorage.getItem('mne_portfolio');
   return saved ? JSON.parse(saved) : defaultPortfolio;
 }
@@ -42,7 +38,8 @@ function getCategoryLabel(slug) {
 }
 
 function getYouTubeThumb(videoId) {
-  return `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+  // Try maxresdefault first; image onerror in card HTML falls back to hqdefault
+  return `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
 }
 
 // ── Preloader ──
@@ -54,37 +51,33 @@ window.addEventListener('load', () => {
 });
 
 // ── Custom Cursor ──
-(function initCursor() {
+function initCursor() {
   if (window.innerWidth < 768) return;
-  
+
   const cursor = document.getElementById('cursor') || document.querySelector('.custom-cursor');
   const cursorGlow = document.getElementById('cursorGlow');
   if (!cursor) return;
+
+  // Hide native cursor on all interactive elements too
+  document.querySelectorAll('a, button, input, select, textarea').forEach(el => {
+    el.style.cursor = 'none';
+  });
 
   let cursorX = 0, cursorY = 0, glowX = 0, glowY = 0;
 
   document.addEventListener('mousemove', (e) => {
     cursorX = e.clientX;
     cursorY = e.clientY;
-    
-    // Direct position update for the main cursor dot
-    if (cursor.id === 'cursor') {
-      cursor.style.left = cursorX + 'px';
-      cursor.style.top = cursorY + 'px';
-    }
+    cursor.style.left = cursorX + 'px';
+    cursor.style.top = cursorY + 'px';
   });
 
   function lerp() {
-    // Smooth lerp for glow OR for .custom-cursor
     glowX += (cursorX - glowX) * 0.08;
     glowY += (cursorY - glowY) * 0.08;
-    
     if (cursorGlow) {
       cursorGlow.style.left = glowX + 'px';
       cursorGlow.style.top = glowY + 'px';
-    } else if (cursor.classList.contains('custom-cursor')) {
-      cursor.style.left = glowX + 'px';
-      cursor.style.top = glowY + 'px';
     }
     requestAnimationFrame(lerp);
   }
@@ -97,16 +90,25 @@ window.addEventListener('load', () => {
   document.addEventListener('mouseout', (e) => {
     if (e.target.closest(hoverEls)) cursor.classList.remove('hover');
   });
-})();
+}
 
 // ── Navbar Scroll ──
-(function initNavbar() {
-  const nav = document.querySelector('.navbar');
+function initNavbar() {
+  // Support both nav#navbar (index.html) and nav.navbar (portfolio.html)
+  const nav = document.getElementById('navbar') || document.querySelector('nav');
   if (!nav) return;
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 50);
   });
-  // Hamburger
+  // Mobile toggle (index.html style)
+  const mobileToggle = document.getElementById('mobileToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileClose = document.getElementById('mobileClose');
+  if (mobileToggle && mobileMenu) {
+    mobileToggle.addEventListener('click', () => mobileMenu.classList.add('active'));
+    if (mobileClose) mobileClose.addEventListener('click', () => mobileMenu.classList.remove('active'));
+  }
+  // Hamburger (portfolio.html style)
   const ham = document.querySelector('.hamburger');
   const links = document.querySelector('.nav-links');
   if (ham && links) {
@@ -121,7 +123,7 @@ window.addEventListener('load', () => {
       });
     });
   }
-})();
+}
 
 // ── Particle System ──
 function initParticles(canvasId) {
@@ -227,7 +229,36 @@ function openVideoModal(videoId, title) {
   const modal = document.getElementById('videoModal');
   const iframe = document.getElementById('modalIframe');
   if (!modal || !iframe) return;
-  iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+
+  // Build embed URL — exact same format as YouTube's own embed share code
+  const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+  iframe.src = embedUrl;
+
+  // Handle YouTube embed error 153 (embedding blocked on file:// or restricted videos)
+  // Wait a moment then check if iframe loaded successfully
+  iframe.onload = function() {
+    // Small delay to let YouTube render
+    setTimeout(() => {
+      try {
+        // If src is still set (not cleared by close), we're good
+        if (iframe.src && iframe.src !== 'about:blank') {
+          // All good, video is playing
+        }
+      } catch(e) {}
+    }, 2000);
+  };
+
+  // Fallback: show a direct YouTube link in case of embed errors
+  const existingFallback = modal.querySelector('.yt-fallback');
+  if (existingFallback) existingFallback.remove();
+
+  const fallback = document.createElement('div');
+  fallback.className = 'yt-fallback';
+  fallback.innerHTML = `
+    <p>If the video doesn't play, <a href="https://www.youtube.com/watch?v=${videoId}" target="_blank" rel="noopener">watch it on YouTube ↗</a></p>
+  `;
+  modal.querySelector('.modal-content').appendChild(fallback);
+
   modal.classList.add('open');
   document.body.style.overflow = 'hidden';
 }
@@ -364,8 +395,16 @@ function initLenis() {
   }
 }
 
+// ── Mobile menu close helper (used by inline onclick) ──
+function closeMobile() {
+  const menu = document.getElementById('mobileMenu');
+  if (menu) menu.classList.remove('active');
+}
+
 // ── Init All ──
 document.addEventListener('DOMContentLoaded', () => {
+  initCursor();
+  initNavbar();
   initReveal();
   initCounters();
   initParticles('heroParticles');
@@ -374,6 +413,30 @@ document.addEventListener('DOMContentLoaded', () => {
   initBookingForm();
   initGSAP();
   initLenis();
+
+  // Contact Form Setup with EmailJS
+  if (typeof emailjs !== 'undefined') { emailjs.init({ publicKey: 'YOUR_PUBLIC_KEY' }); }
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const btn = this.querySelector('button[type="submit"]');
+      const originalText = btn.textContent;
+      btn.textContent = 'Sending...';
+      
+      if (typeof emailjs !== 'undefined') { emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
+        .then(() => {
+            btn.textContent = 'Message Sent!';
+            this.reset();
+            setTimeout(() => btn.textContent = originalText, 3000);
+        }, (error) => {
+            console.error('FAILED...', error);
+            btn.textContent = 'Failed to Send (Check Keys)';
+            setTimeout(() => btn.textContent = originalText, 3000);
+        });
+      } else { alert('EmailJS not loaded'); btn.textContent = originalText; }
+    });
+  }
 
   // Modal close
   const modal = document.getElementById('videoModal');

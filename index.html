@@ -7,6 +7,7 @@
   <title>MOTIONNODEEDITS — Cinematic AI Creative Agency</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" type="image/png" href="image/logo.png">
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
 
@@ -27,6 +28,7 @@
   </ul>
   <div class="nav-cta">
     <a href="#contact" class="btn-primary">Contact Us</a>
+      <button class="btn-secondary" onclick="openVideoModal('k9egdphA9mQ', 'Showreel')">Watch Our Reel</button>
   </div>
   <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
     <span></span><span></span><span></span>
@@ -43,7 +45,7 @@
 <!-- HERO -->
 <section class="hero" id="hero">
   <video class="hero-video" autoplay muted loop playsinline>
-    <source src="https://cdn.coverr.co/videos/coverr-abstract-dark-smoke/1080p.mp4" type="video/mp4">
+    <source src="assets/showreel.mp4" type="video/mp4">
   </video>
   <div class="hero-overlay"></div>
   <div class="hero-glow"></div>
@@ -52,6 +54,7 @@
     <p class="hero-sub reveal reveal-delay-1">Premium cinematic AI production for brands that demand excellence.</p>
     <div class="hero-btns reveal reveal-delay-2">
       <a href="#contact" class="btn-primary">Contact Us</a>
+      <button class="btn-secondary" onclick="openVideoModal('k9egdphA9mQ', 'Showreel')">Watch Our Reel</button>
     </div>
   </div>
   <div class="scroll-indicator">
@@ -64,11 +67,11 @@
 <section class="stats" id="stats">
   <div class="stats-grid">
     <div class="stat-item reveal">
-      <h3><span class="stat-num" data-count="150" data-suffix="+">0</span></h3>
+      <h3><span class="stat-num" data-count="50" data-suffix="+">0</span></h3>
       <p>Projects Delivered</p>
     </div>
     <div class="stat-item reveal reveal-delay-1">
-      <h3><span class="stat-num" data-count="50" data-suffix="M+">0</span></h3>
+      <h3><span class="stat-num" data-count="2" data-suffix="M+">0</span></h3>
       <p>Views Generated</p>
     </div>
     <div class="stat-item reveal reveal-delay-2">
@@ -76,7 +79,7 @@
       <p>Client Retention</p>
     </div>
     <div class="stat-item reveal reveal-delay-3">
-      <h3><span class="stat-num" data-count="24" data-suffix="hr">0</span></h3>
+      <h3><span class="stat-num" data-count="48" data-suffix="hr">0</span></h3>
       <p>Turnaround Time</p>
     </div>
   </div>
@@ -102,7 +105,7 @@
       <!-- Filter buttons are dynamically generated from categories in main.js -->
     </div>
   </div>
-  <div class="portfolio-scroll" id="portfolioCards">
+  <div class="portfolio-grid" id="portfolioCards">
     <!-- Cards injected by JS -->
   </div>
 </section>
@@ -114,34 +117,68 @@
   <p class="section-desc reveal reveal-delay-2">End-to-end AI-powered creative solutions for the modern brand.</p>
   <div class="services-grid">
     <div class="service-card reveal">
-      <span class="service-icon">🎬</span>
+      <span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg></span>
       <h3>AI Video Editing</h3>
       <p>Cinematic editing powered by AI — faster turnarounds, premium quality, every time.</p>
     </div>
     <div class="service-card reveal reveal-delay-1">
-      <span class="service-icon">📢</span>
+      <span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-5v12L3 14v-3z"></path><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"></path></svg></span>
       <h3>AI Ads</h3>
       <p>Scroll-stopping ad creatives engineered for maximum conversions and brand impact.</p>
     </div>
     <div class="service-card reveal reveal-delay-2">
-      <span class="service-icon">🤖</span>
+      <span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></span>
       <h3>AI Avatar Videos</h3>
       <p>Hyper-realistic AI avatars that deliver your message with human-like authenticity.</p>
     </div>
     <div class="service-card reveal reveal-delay-3">
-      <span class="service-icon">✨</span>
+      <span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></span>
       <h3>Motion Graphics</h3>
       <p>Dynamic motion design that elevates your brand with fluid, eye-catching visuals.</p>
     </div>
     <div class="service-card reveal reveal-delay-4">
-      <span class="service-icon">🔥</span>
+      <span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg></span>
       <h3>Viral Reels</h3>
       <p>Short-form content optimized for virality — built for Instagram, TikTok, and YouTube.</p>
     </div>
     <div class="service-card reveal reveal-delay-5">
-      <span class="service-icon">🏠</span>
+      <span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></span>
       <h3>Real Estate Promotions</h3>
       <p>Cinematic property showcases that sell aspirations, not just spaces.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="container">
+    <p class="section-label reveal">Client Love</p>
+    <h2 class="section-title reveal reveal-delay-1">Testimonials</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-quote">"MOTIONNODEEDITS completely transformed our ad campaigns. The AI integrations allowed us to scale content faster than ever without losing that premium cinematic feel."</p>
+        <div class="testimonial-author">
+          <span class="testimonial-name">Sarah Jenkins</span>
+          <span class="testimonial-company">CMO, TechNova</span>
+        </div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-1">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-quote">"The 48-hour turnaround time is no joke. They delivered a breathtaking real estate showcase that helped us close a $4M property in days."</p>
+        <div class="testimonial-author">
+          <span class="testimonial-name">Marcus Cole</span>
+          <span class="testimonial-company">Luxury Estates Group</span>
+        </div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-2">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-quote">"Their AI avatar videos are indistinguishable from real human presenters. It gave our corporate training an entirely new, engaging dimension."</p>
+        <div class="testimonial-author">
+          <span class="testimonial-name">David L.</span>
+          <span class="testimonial-company">HR Director, Apex</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -190,18 +227,18 @@
     <div>
       <p class="section-label reveal">Get in Touch</p>
       <h2 class="section-title reveal reveal-delay-1">Contact Us</h2>
-      <form class="contact-form reveal reveal-delay-2">
+      <form id="contactForm" class="contact-form reveal reveal-delay-2">
         <div class="form-group">
           <label>Name</label>
-          <input type="text" placeholder="Your name">
+          <input type="text" name="user_name" placeholder="Your name" required>
         </div>
         <div class="form-group">
           <label>Email</label>
-          <input type="email" placeholder="your@email.com">
+          <input type="email" name="user_email" placeholder="your@email.com" required>
         </div>
         <div class="form-group">
           <label>Message</label>
-          <textarea rows="5" placeholder="Your message..."></textarea>
+          <textarea rows="5" name="message" placeholder="Your message..." required></textarea>
         </div>
         <button type="submit">Send Message</button>
       </form>
@@ -219,10 +256,21 @@
         <a href="https://www.facebook.com/motionnodeedits/" target="_blank" class="social-btn" aria-label="Facebook">
           <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
         </a>
-        <a href="https://www.youtube.com/@motionnodeedtis" target="_blank" class="social-btn" aria-label="YouTube">
+        <a href="https://www.youtube.com/@motionnodeedits" target="_blank" class="social-btn" aria-label="YouTube">
           <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
         </a>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEW CTA SECTION -->
+<section class="cta-section" id="cta">
+  <div class="cta-glow"></div>
+  <div class="container">
+    <div class="cta-content reveal">
+      <h2>Ready to Dominate?</h2>
+      <a href="https://calendly.com/" target="_blank" class="btn-primary">Book a Free Strategy Call</a>
     </div>
   </div>
 </section>
@@ -246,7 +294,7 @@
       <a href="https://www.facebook.com/motionnodeedits/" target="_blank" aria-label="Facebook">
         <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
       </a>
-      <a href="https://www.youtube.com/@motionnodeedtis" target="_blank" aria-label="YouTube">
+      <a href="https://www.youtube.com/@motionnodeedits" target="_blank" aria-label="YouTube">
         <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
       </a>
     </div>
@@ -263,7 +311,11 @@
 <div class="video-modal" id="videoModal">
   <div class="modal-content">
     <button class="modal-close" id="modalClose" onclick="closeVideoModal()">&times;</button>
-    <iframe id="modalIframe" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    <iframe id="modalIframe" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      referrerpolicy="strict-origin-when-cross-origin"
+      allowfullscreen
+      frameborder="0"></iframe>
   </div>
 </div>
 
