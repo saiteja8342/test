@@ -26,8 +26,8 @@ a, button, [role="button"], input, select, textarea, label { cursor: none !impor
 @media(max-width:768px){ .cursor,.cursor-glow{display:none;} body{cursor:auto;} a, button, [role="button"], input, select, textarea, label { cursor: auto !important; } }
 
 /* NAV */
-nav { position:fixed; top:0; left:0; width:100%; z-index:1000; padding:0 40px 0 60px; display:flex; align-items:center; justify-content:space-between; backdrop-filter:blur(20px); background:rgba(0,0,0,0.8); border-bottom:1px solid var(--border); transition:all .4s; box-sizing:border-box; }
-nav.scrolled { padding:0 40px 0 60px; background:rgba(0,0,0,0.8); }
+nav { position:fixed; top:0; left:0; width:100%; z-index:1000; padding:0 40px 0 60px; display:flex; align-items:center; justify-content:space-between; backdrop-filter:blur(20px); background: linear-gradient(to bottom, rgba(255, 255, 255, 0.03), transparent), rgba(0, 0, 0, 0.8); border-bottom:1px solid var(--border); transition:all .4s; box-sizing:border-box; }
+nav.scrolled { padding:0 40px 0 60px; background: linear-gradient(to bottom, rgba(255, 255, 255, 0.05), transparent), rgba(0, 0, 0, 0.8); }
 .nav-logo { display: flex; align-items: center; text-decoration: none; flex-shrink:0; }
 .nav-logo img { height: 75px; width: auto; transition: transform 0.3s; }
 .nav-logo:hover img { transform: scale(1.05); }
