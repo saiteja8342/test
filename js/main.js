@@ -1,4 +1,5 @@
-// ── Portfolio Data (Real channel: @motionnodeedtis) ──
+/* Corrections applied: Stats fix, YouTube typo fix, Portfolio cards, Form connection, Scroll animations, Hero typography, SVG icons, OG meta tags */
+// ── Portfolio Data (Real channel: @motionnodeedits) ──
 const defaultPortfolio = [
   { id:'1', title:'Car Thar | AI Car', category:'ai-ads', youtubeId:'IltFdkq1qRA', desc:'Cinematic AI-generated car commercial' },
   { id:'2', title:'Mysore Pak | AI Ad', category:'ai-ads', youtubeId:'VYvni7IJaGc', desc:'Premium AI food product ad' },
@@ -414,29 +415,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initGSAP();
   initLenis();
 
-  // Contact Form Setup with EmailJS
-  if (typeof emailjs !== 'undefined') { emailjs.init({ publicKey: 'YOUR_PUBLIC_KEY' }); }
-  const contactForm = document.getElementById('contactForm');
-  if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      const btn = this.querySelector('button[type="submit"]');
-      const originalText = btn.textContent;
-      btn.textContent = 'Sending...';
-      
-      if (typeof emailjs !== 'undefined') { emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
-        .then(() => {
-            btn.textContent = 'Message Sent!';
-            this.reset();
-            setTimeout(() => btn.textContent = originalText, 3000);
-        }, (error) => {
-            console.error('FAILED...', error);
-            btn.textContent = 'Failed to Send (Check Keys)';
-            setTimeout(() => btn.textContent = originalText, 3000);
-        });
-      } else { alert('EmailJS not loaded'); btn.textContent = originalText; }
-    });
-  }
+
 
   // Modal close
   const modal = document.getElementById('videoModal');
@@ -444,4 +423,114 @@ document.addEventListener('DOMContentLoaded', () => {
     modal.addEventListener('click', e => { if (e.target === modal) closeVideoModal(); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeVideoModal(); });
   }
+});
+
+// ── Custom Portfolio Tabs & Modal ──
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.portfolio-lane').forEach(l => l.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('lane-' + btn.dataset.tab).classList.add('active');
+  });
+});
+
+// ── Contact Form Formspree ──
+const newContactForm = document.querySelector('form[action*="formspree"]');
+if (newContactForm) {
+  newContactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = new FormData(newContactForm);
+    const response = await fetch(newContactForm.action, {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    });
+    if (response.ok) {
+      newContactForm.style.display = 'none';
+      document.getElementById('form-success').style.display = 'block';
+    } else {
+      alert('Something went wrong. Please WhatsApp us directly.');
+    }
+  });
+}
+
+// ── Reveal Scroll Animations ──
+const revealEls = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+revealEls.forEach(el => revealObserver.observe(el));
+
+/* --- NEW FEATURES JS --- */
+
+/* FEATURE 3 — Carousel Logic */
+(function() {
+  const track = document.getElementById('carouselTrack');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const dotsContainer = document.getElementById('carouselDots');
+  if (!track) return;
+
+  const cards = track.querySelectorAll('.carousel-card');
+  const total = cards.length;
+  // Calculate maxIndex safely
+  let perView = window.innerWidth < 900 ? 1 : 3;
+  let maxIndex = Math.max(0, total - perView);
+  let current = 0;
+
+  // Build dots
+  function buildDots() {
+    dotsContainer.innerHTML = '';
+    for (let i = 0; i <= maxIndex; i++) {
+      const dot = document.createElement('div');
+      dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+      dot.addEventListener('click', () => goTo(i));
+      dotsContainer.appendChild(dot);
+    }
+  }
+  buildDots();
+
+  function goTo(index) {
+    current = Math.max(0, Math.min(index, maxIndex));
+    const cardWidth = cards[0].getBoundingClientRect().width + 24; // width + gap
+    track.style.transform = `translateX(-${current * cardWidth}px)`;
+    document.querySelectorAll('.carousel-dot').forEach((d, i) => {
+      d.classList.toggle('active', i === current);
+    });
+    if(prevBtn) prevBtn.disabled = current === 0;
+    if(nextBtn) nextBtn.disabled = current === maxIndex;
+  }
+
+  if(prevBtn) prevBtn.addEventListener('click', () => goTo(current - 1));
+  if(nextBtn) nextBtn.addEventListener('click', () => goTo(current + 1));
+  goTo(0);
+
+  // Handle window resize
+  window.addEventListener('resize', () => {
+    const newPerView = window.innerWidth < 900 ? 1 : 3;
+    if (newPerView !== perView) {
+      perView = newPerView;
+      maxIndex = Math.max(0, total - perView);
+      buildDots();
+      goTo(0);
+    } else {
+      goTo(current); // recalculate transform on resize
+    }
+  });
+})();
+
+/* FEATURE 5 — FAQ Accordion Logic */
+document.querySelectorAll('.faq-question').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
 });
