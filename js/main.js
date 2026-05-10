@@ -168,11 +168,16 @@ function initParticles(canvasId) {
 
 // ── Scroll Reveal ──
 function initReveal() {
-  const els = document.querySelectorAll('.reveal, .reveal-left');
+  const els = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
   if (!els.length) return;
   const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-  }, { threshold: 0.15 });
+    entries.forEach(e => { 
+      if (e.isIntersecting) { 
+        e.target.classList.add('visible'); 
+        obs.unobserve(e.target); 
+      } 
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
   els.forEach(el => obs.observe(el));
 }
 
@@ -455,17 +460,7 @@ if (newContactForm) {
   });
 }
 
-// ── Reveal Scroll Animations ──
-const revealEls = document.querySelectorAll('.reveal');
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      revealObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.12 });
-revealEls.forEach(el => revealObserver.observe(el));
+// Handled by initReveal in DOMContentLoaded
 
 /* --- NEW FEATURES JS --- */
 
